@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Pheven ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(to bottom, #1a1a1a, #3b0a0a);
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding: 40px 20px;
+}
+
+button {
+    padding: 15px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option-btn {
+    background: #fff;
+    color: #000;
+}
+
+.option-btn.active {
+    background: red;
+    color: white;
+}
+
+.letter {
+    display: none;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    animation: fadeIn 1s ease;
+}
+
+.old-letter {
+    background: #f5deb3;
+    color: #3b2f2f;
+    background-image: url('https://i.imgur.com/8Km9tLL.png');
+    background-size: cover;
+    border: 2px solid #c2a678;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.flowers {
+    font-size: 25px;
+}
+
+.next-btn {
+    margin-top: 20px;
+    background: pink;
+}
+
+.big-text {
+    display: none;
+    font-size: 40px;
+    margin-top: 50px;
+    animation: fadeIn 2s ease;
+}
+
+.final-message {
+    display: none;
+    font-size: 22px;
+    margin-top: 40px;
+    animation: fadeInOut 5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeInOut {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.fade {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    to {opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+    <h2>Choose one, Pheven… ❤️</h2>
+
+    <button class="option-btn" id="btn1" onclick="chooseOption(1)">1</button>
+    <button class="option-btn" id="btn2" onclick="chooseOption(2)">2</button>
+
+    <div id="letter" class="letter"></div>
+
+    <button id="nextBtn" class="next-btn" style="display:none;" onclick="nextStep()">Next</button>
+
+    <div id="bigText" class="big-text">I love you, my darling ❤️</div>
+
+    <div id="finalMessage" class="final-message">
+        Your lover Ollie loves you and falls in love with your eyes every day
+    </div>
+</div>
+
+<script>
+function chooseOption(option) {
+    const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+    const letter = document.getElementById("letter");
+    const nextBtn = document.getElementById("nextBtn");
+
+    btn1.classList.remove("active");
+    btn2.classList.remove("active");
+
+    if(option === 1){
+        btn1.classList.add("active");
+
+        letter.className = "letter old-letter";
+        letter.innerHTML = `
+            <div class="flowers">🌹🌸🌹</div>
+            <p>
+            My dearest Pheven,<br><br>
+            From the moment you came into my life, everything felt different… softer, warmer, more alive.  
+            <br><br>
+            Pheven, you are the kind of feeling people write poems about but never fully capture.  
+            And yet here I am, trying… because my heart refuses to stay silent about you.  
+            <br><br>
+            If time stopped, I wouldn’t notice—because every moment with you already feels like forever.  
+            <br><br>
+            You are my peace, my dream, my always.
+            <br><br>
+            Yours, eternally.
+            </p>
+            <div class="flowers">🌹🌸🌹</div>
+        `;
+    } else {
+        btn2.classList.add("active");
+
+        letter.className = "letter";
+        letter.style.background = "rgba(255,255,255,0.1)";
+        letter.style.color = "white";
+
+        letter.innerHTML = `
+            <p>
+            My Pheven,<br><br>
+            I still can’t believe I get to call you mine.  
+            Out of everyone in this world… somehow, I got you.  
+            <br><br>
+            You don’t even try, but everything about you is beautiful.  
+            Your eyes… they do something to me I can’t explain.  
+            It’s like I fall in love every time I look at you.  
+            <br><br>
+            Pheven, you are not just special… you are everything.  
+            And I swear, I will choose you again and again, in every life, in every moment.
+            </p>
+        `;
+    }
+
+    letter.style.display = "block";
+    nextBtn.style.display = "inline-block";
+}
+
+function nextStep(){
+    document.getElementById("main").classList.add("fade");
+
+    setTimeout(() => {
+        document.getElementById("main").classList.remove("fade");
+
+        document.getElementById("letter").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        const bigText = document.getElementById("bigText");
+        bigText.style.display = "block";
+
+        setTimeout(() => {
+            bigText.style.display = "none";
+
+            const finalMsg = document.getElementById("finalMessage");
+            finalMsg.style.display = "block";
+
+        }, 3000);
+
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
