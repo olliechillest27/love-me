@@ -1,236 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Pheven ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Pheven 💌</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
 body {
-    margin: 0;
-    background: black;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    overflow-x: hidden;
+  background: black;
+  color: white;
+  overflow: hidden;
 }
 
-/* Soft fade animation */
-.fade-in {
-    animation: fadeIn 1.5s ease forwards;
+/* soft flowers background */
+.flowers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 30%, rgba(255,0,0,0.2), transparent 40%),
+              radial-gradient(circle at 70% 60%, rgba(255,255,255,0.08), transparent 50%);
+  animation: float 10s infinite alternate ease-in-out;
 }
 
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
+@keyframes float {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
 }
 
 .container {
-    padding: 40px 20px;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
 }
 
-/* Buttons */
-button {
-    padding: 14px 26px;
-    margin: 10px;
-    border-radius: 30px;
-    border: 1px solid white;
-    background: transparent;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.4s ease;
+.paper {
+  background: #f5f5f5;
+  color: black;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transition: all 0.8s ease;
 }
 
-button:hover {
-    background: rgba(255,255,255,0.1);
+h1 {
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
-.option-btn.active {
-    background: #ff1a1a;
-    border-color: #ff1a1a;
-    box-shadow: 0 0 15px rgba(255,0,0,0.6);
+p {
+  font-weight: 300;
+  line-height: 1.6;
 }
 
-/* Letter box */
-.letter {
-    display: none;
-    margin-top: 30px;
-    padding: 25px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    animation: fadeIn 1.5s ease;
-    line-height: 1.6;
+.btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* Old style */
-.old-letter {
-    background: #f5e6cc;
-    color: #2b1d0e;
-    font-family: 'Dancing Script', cursive;
-    font-size: 22px;
-    border: 2px solid #c9a86a;
-    box-shadow: 0 0 30px rgba(255, 200, 150, 0.3);
+.btn:hover {
+  background: red;
 }
 
-/* Modern romantic */
-.modern-letter {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.2);
-    font-size: 18px;
+.fade {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: 0.8s;
 }
 
-/* Flowers */
-.flowers {
-    font-size: 26px;
-    margin: 10px 0;
+.hidden {
+  display: none;
 }
 
-/* Next button */
-.next-btn {
-    display: none;
-    margin-top: 20px;
-    border: none;
-    background: #ff1a1a;
-    color: white;
-    border-radius: 30px;
-    padding: 12px 25px;
-    transition: 0.4s;
+.iphone-slide {
+  animation: slideUp 1s ease forwards;
 }
 
-.next-btn:hover {
-    box-shadow: 0 0 20px red;
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-/* Big love text */
-.big-text {
-    display: none;
-    font-size: 42px;
-    font-weight: 600;
-    margin-top: 60px;
-    animation: fadeIn 2s ease;
-}
-
-/* Final message */
-.final-message {
-    display: none;
-    font-size: 22px;
-    margin-top: 40px;
-    opacity: 0;
-    animation: fadeFinal 6s ease forwards;
-}
-
-@keyframes fadeFinal {
-    0% {opacity: 0;}
-    20% {opacity: 1;}
-    80% {opacity: 1;}
-    100% {opacity: 0;}
+.love-btn {
+  margin-top: 15px;
+  background: red;
 }
 </style>
 </head>
-
 <body>
 
-<div class="container fade-in" id="main">
-    <h2 style="font-weight:600;">Choose one, Pheven… ❤️</h2>
+<div class="flowers"></div>
 
-    <button class="option-btn" id="btn1" onclick="chooseOption(1)">1</button>
-    <button class="option-btn" id="btn2" onclick="chooseOption(2)">2</button>
+<div class="container">
 
-    <div id="letter" class="letter"></div>
+  <!-- First Letter -->
+  <div id="step1" class="paper">
+    <h1>To Pheven 💖</h1>
+    <p>
+      I feel like the luckiest person alive to have you in my life.
+      Every second with you feels like heaven, like the world slows down
+      just for us. I love you from the deepest part of my heart.
+    </p>
+    <button class="btn" onclick="nextStep()">Next</button>
+  </div>
 
-    <button id="nextBtn" class="next-btn" onclick="nextStep()">Next</button>
+  <!-- Second Page -->
+  <div id="step2" class="paper hidden">
+    <h1 class="iphone-slide">💫 Your Lover, Ollie</h1>
+    <p class="iphone-slide">
+      Loves you endlessly... and falls in love with your eyes every single day.
+    </p>
+    <button class="btn love-btn" onclick="finalStep()">❤️ Love</button>
+  </div>
 
-    <div id="bigText" class="big-text">I love you, my darling ❤️</div>
-
-    <div id="finalMessage" class="final-message">
-        Your lover Ollie loves you and falls in love with your eyes every day
-    </div>
 </div>
 
 <script>
-function chooseOption(option) {
-    const btn1 = document.getElementById("btn1");
-    const btn2 = document.getElementById("btn2");
-    const letter = document.getElementById("letter");
-    const nextBtn = document.getElementById("nextBtn");
-
-    btn1.classList.remove("active");
-    btn2.classList.remove("active");
-
-    if(option === 1){
-        btn1.classList.add("active");
-
-        letter.className = "letter old-letter fade-in";
-        letter.innerHTML = `
-        <div class="flowers">🌹🌸💐🌺🌷🌼</div>
-        <p>
-        <b>My dearest Pheven,</b><br><br>
-        From the moment you walked into my life, everything became softer… calmer… more beautiful.  
-        <br><br>
-        You feel like a dream I never want to wake up from.  
-        A kind of love people search for their whole lives.  
-        <br><br>
-        If forever had a meaning… it would be you.  
-        <br><br>
-        <b>Yours, always.</b>
-        </p>
-        <div class="flowers">🌹🌸💐🌺🌷🌼</div>
-        `;
-    } else {
-        btn2.classList.add("active");
-
-        letter.className = "letter modern-letter fade-in";
-        letter.innerHTML = `
-        <p>
-        <b>My Pheven,</b><br><br>
-        I don’t think you understand how special you are to me.  
-        Not just beautiful… but the kind of beautiful that stays in my mind all day.  
-        <br><br>
-        Your eyes… they pull me in every single time.  
-        Like I fall in love again… and again… and again.  
-        <br><br>
-        I feel lucky. Truly lucky.  
-        Because somehow… I got you.  
-        <br><br>
-        <b>And I will always choose you.</b>
-        </p>
-        `;
-    }
-
-    letter.style.display = "block";
-    nextBtn.style.display = "inline-block";
+function nextStep() {
+  document.getElementById('step1').classList.add('fade');
+  setTimeout(() => {
+    document.getElementById('step1').classList.add('hidden');
+    document.getElementById('step2').classList.remove('hidden');
+    document.getElementById('step2').classList.add('iphone-slide');
+  }, 600);
 }
 
-function nextStep(){
-    const main = document.getElementById("main");
-    main.style.transition = "opacity 1.5s ease";
-    main.style.opacity = "0";
-
-    setTimeout(() => {
-        document.getElementById("letter").style.display = "none";
-        document.getElementById("nextBtn").style.display = "none";
-
-        const bigText = document.getElementById("bigText");
-        bigText.style.display = "block";
-
-        main.style.opacity = "1";
-
-        setTimeout(() => {
-            bigText.style.opacity = "0";
-
-            setTimeout(() => {
-                bigText.style.display = "none";
-
-                const finalMsg = document.getElementById("finalMessage");
-                finalMsg.style.display = "block";
-            }, 1000);
-
-        }, 3000);
-
-    }, 1500);
+function finalStep() {
+  document.body.innerHTML = `
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:black;color:white;text-align:center;flex-direction:column;">
+      <h1 style="font-size:2rem;">💖 It’s just you & me now, Pheven</h1>
+      <p style="margin-top:10px;opacity:0.8;">Forever starts here...</p>
+    </div>
+  `;
 }
 </script>
 
